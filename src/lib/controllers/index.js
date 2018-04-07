@@ -1,3 +1,4 @@
 module.exports = {
-  shopify: require('./shopifyController')
+  shopify: require('./shopifyController'),
+  login: require('./shopifyController')
 };
