@@ -49,7 +49,8 @@
     "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
-    "start": "webpack && nf run nodemon ./src/server.js",
+    "dev-start": "webpack && nf run nodemon ./src/server.js",
+    "start": "webpack && node ./src/server.js",
     "build": "webpack",
     "lint": "eslint"
   }
