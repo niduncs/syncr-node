@@ -1,6 +1,5 @@
 const ShopifyApi = require('shopify-node-api');
 const uuid = require('uuid/v4');
-const path = require('path');
 
 const defaultShopifyConfig = {
   shopify_api_secret: process.env.SHOPIFY_SECRET,
@@ -21,7 +20,7 @@ const authorize = (req, res) => {
   });
 
   return res.json({ redirect_url: api.buildAuthURL() });
-}
+};
 
 const install = (req, res) => {
   const api = new ShopifyApi({
@@ -31,16 +30,13 @@ const install = (req, res) => {
 
   api.exchange_temporary_token(req.query, (err, data) => {
     if (err || !data['access_token']) return res.json({ success: false });
-    const userData = {};
-    const user = knex('users').insert(userData, 'id');
-
-    return res.json({success: true, user});
+    return res.json({success: true});
   });
 
   return res.json({ success: false });
-}
+};
 
 module.exports = {
   authorize,
   install
-}
+};

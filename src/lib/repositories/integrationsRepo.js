@@ -3,10 +3,6 @@ const db = require('knex')({
   connection: process.env.DATABASE_URL
 });
 
-const defaultIntegrationSettings = {
-  
-}
-
 module.exports = {
   create: data => {
     db.table('integrations').insert(data, 'id').then(id => id);
@@ -22,7 +18,7 @@ module.exports = {
       })
       .catch(err => {
         // todo: log this somewhere
-        return null;
+        return err;
       });
   },
   all: userId => {
@@ -33,7 +29,7 @@ module.exports = {
       })
       .catch(err => {
         // todo: log this somewhere
-        return null;
+        return err;
       });
   } 
-}
+};

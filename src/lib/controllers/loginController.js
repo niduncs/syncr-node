@@ -4,13 +4,13 @@ const login = (req, res) => {
     return res.json({ success: false, token: null });
   }
   return res.json({ success: true });
-}
+};
 
 const register = (req, res) => {
-
-}
+  return res.status(200).json({success: true});
+};
 
 module.exports = {
   login,
   register
-}
+};

@@ -8,6 +8,6 @@ module.exports = [
     .normalizeEmail()
     .custom(value => {
       // check for existing record 
-      return true;
+      return value;
     })
-]
+];

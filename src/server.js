@@ -1,14 +1,9 @@
 const express = require('express');
-const path = require('path');
 const https = require('https');
 const http = require('http');
 const errorHandler = require('errorhandler');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const knex = require('knex')({
-  client: 'pg',
-  connection: process.env.DATABASE_URL
-});
 const app = express();
 
 app.disable('x-powered-by');
@@ -30,7 +25,7 @@ app.use(session({
   },
   resave: false,
   saveUninitialized: false
-}))
+}));
 
 app.use('/', express.static('build'));
 app.use(bodyParser.urlencoded({ extended: true }));
