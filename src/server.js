@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 //   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 // });
 
-app.use('/api/v1', require('./lib/apiRouter'));
+app.use('/api/v1', require('./api/router'));
 
 const server =
   process.env.NODE_ENV !== 'production' ? http.Server(app) : https.Server(app);

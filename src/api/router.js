@@ -1,5 +1,5 @@
 const express = require('express');
-const controllers = require('./controllers');
+const controllers = require('../lib/controllers');
 const api = express.Router();
 
 api.use((req, res, next) => {
