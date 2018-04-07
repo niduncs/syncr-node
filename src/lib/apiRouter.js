@@ -1,11 +1,11 @@
 const express = require('express');
+const controllers = require('./controllers');
 const api = express.Router();
 
 api.use((req, res, next) => {
+  // todo: auth middleware
   next();
 });
-
-const controllers = require('./controllers')
 
 api.get('/shopify/authorize', controllers.shopify.authorize);
 
@@ -13,30 +13,16 @@ api.get('/shopify/callback', controllers.shopify.install);
 
 api.post('/login', controllers.login.login);
 
-api.post('/register', (req, res) => {
-  return res.json({ success: true });
-});
+api.post('/register', controllers.login.register);
 
-api.get('/integrations', (req, res) => {
-  return res.json({ success: true });
-});
+api.post('/integrations/create', controllers.integrations.create);
 
-api.post('/integrations/create', (req, res) => {
-  return res.json({ success: true });
-});
+api.delete('/integrations/:uid', controllers.integrations.destroy);
 
-api.delete('/integrations/:uid', (req, res) => {
-  return res.json({ success: true });
-});
+api.get('/integrations/:uid', controllers.integrations.getById);
 
-api.get('/integrations/:uid', (req, res) => {
-  return res.json({ success: true });
-});
+api.put('/integrations/:uid', controllers.integrations.update);
 
-api.put('/integrations/:uid', (req, res) => {
-  return res.json({ success: true });
-});
-
-api.put('user/settings', (req, res) => {});
+api.put('user/settings', controllers.users.update);
 
 module.exports = api;

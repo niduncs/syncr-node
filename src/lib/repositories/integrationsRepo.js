@@ -3,19 +3,37 @@ const db = require('knex')({
   connection: process.env.DATABASE_URL
 });
 
-const defaultUserSettings = {
+const defaultIntegrationSettings = {
   
 }
 
 module.exports = {
-  create: (data) => {
-
+  create: data => {
+    db.table('integrations').insert(data, 'id').then(id => id);
   },
-  update: (data) => {
-
+  update: data => {
+    db.table('integrations').update(data).then(result => result);
   },
-  findById: (id) => {
-
+  findById: id => {
+    db.table('integrations')
+      .where({id})
+      .then(result => {
+        return result.length ? result[0] : null;
+      })
+      .catch(err => {
+        // todo: log this somewhere
+        return null;
+      });
   },
-  
+  all: userId => {
+    db.table('integrations')
+      .where({user_id: userId})
+      .then(result => {
+        return result;
+      })
+      .catch(err => {
+        // todo: log this somewhere
+        return null;
+      });
+  } 
 }

@@ -4,8 +4,7 @@ const https = require('https');
 const http = require('http');
 const errorHandler = require('errorhandler');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+const session = require('express-session');
 const knex = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL
@@ -20,19 +19,23 @@ app.use(
     showStack: true
   })
 );
+
+app.use(session({
+  name: 'syncr.session',
+  secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: false,
+    maxAge: 2592000, // 30 days
+    secure: process.env.NODE_ENV === 'production'
+  },
+  resave: false,
+  saveUninitialized: false
+}))
+
 app.use('/', express.static('build'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(
-  cookieSession({
-    name: 'session',
-    keys: [process.env.COOKIE_SECRET],
-    cookie: {
-      httpOnly: false
-    }
-  })
-);
+
 
 // app.use('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
