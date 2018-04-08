@@ -1,19 +1,10 @@
 const ShopifyApi = require('shopify-node-api');
 const uuid = require('uuid/v4');
-
-const defaultShopifyConfig = {
-  shopify_api_secret: process.env.SHOPIFY_SECRET,
-  shopify_api_key: process.env.SHOPIFY_API_KEY,
-  shopify_scope: process.env.SHOPIFY_SCOPES,
-  verbose: false,
-  rate_limit_delay: 5000,
-  backoff: 36,
-  backoff_delay: 1500
-};
+const { constants } = require('../../utils');
 
 const authorize = (req, res) => {
   const api = new ShopifyApi({
-    ...defaultShopifyConfig,
+    ...constants.defaultShopifyConfig,
     shop: req.query.shop,
     redirect_uri: process.env.SHOPIFY_CALLBACK_URL,
     nonce: uuid()
