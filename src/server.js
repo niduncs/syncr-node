@@ -31,7 +31,6 @@ app.use('/', express.static('build'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 // app.use('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 // });

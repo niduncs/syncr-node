@@ -3,16 +3,16 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import '../styles/App.css';
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
+      <div className='App'>
         <form>
-          <FormGroup controlId="something">
+          <FormGroup controlId='something'>
             <ControlLabel>Username</ControlLabel>
             <FormControl
-              type="text"
-              value="something"
-              placeholder="This is text"
+              type='text'
+              value='something'
+              placeholder='This is text'
             />
           </FormGroup>
         </form>

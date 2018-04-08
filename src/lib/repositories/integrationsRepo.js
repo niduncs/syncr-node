@@ -31,5 +31,5 @@ module.exports = {
         // todo: log this somewhere
         return err;
       });
-  } 
+  }
 };

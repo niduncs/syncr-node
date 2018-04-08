@@ -7,7 +7,7 @@ module.exports = [
     .trim()
     .normalizeEmail()
     .custom(value => {
-      // check for existing record 
+      // check for existing record
       return value;
     })
 ];

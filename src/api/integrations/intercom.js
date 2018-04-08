@@ -1,6 +1,6 @@
 const api = require('intercom-client');
 
-function IntercomApi(token) {
+function IntercomApi (token) {
   this.client = api.Client({token: token});
 }
 

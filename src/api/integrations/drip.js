@@ -1,4 +1,4 @@
-function DripApi(apiKey) {
+function DripApi (apiKey) {
   this.client = require('drip-api')({
     apiKey: apiKey
   });
