@@ -15,7 +15,7 @@ const authorize = (req, res) => {
 
 const install = (req, res) => {
   const api = new ShopifyApi({
-    ...defaultShopifyConfig,
+    ...constants.defaultShopifyConfig,
     shop: req.params.shop
   });
 

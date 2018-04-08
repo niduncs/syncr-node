@@ -10,4 +10,4 @@ const defaultShopifyConfig = {
 
 module.exports = {
   defaultShopifyConfig
-}
+};
