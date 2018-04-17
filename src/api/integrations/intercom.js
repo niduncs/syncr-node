@@ -1,9 +1,10 @@
-const api = require('intercom-client');
+import api from 'intercom-client';
 
-function IntercomApi (token) {
-  this.client = api.Client({token: token});
+class IntercomApi {
+  constructor(token) {
+    this.client = api.Client({token: token});
+  }
+  getAccounts() {
+    return this.client.users.list(d => d);
+  }
 }
-
-IntercomApi.prototype.getAccounts = () => {
-  return this.client.users.list(d => d);
-};

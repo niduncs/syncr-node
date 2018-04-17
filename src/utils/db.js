@@ -1,4 +1,6 @@
-module.exports = require('knex')({
+const db = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL
 });
+
+export default db;

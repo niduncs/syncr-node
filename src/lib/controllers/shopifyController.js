@@ -1,6 +1,6 @@
-const ShopifyApi = require('shopify-node-api');
-const uuid = require('uuid/v4');
-const { constants } = require('../../utils');
+import ShopifyApi from 'shopify-node-api';
+import uuid from 'uuid/v4';
+import { constants } from '../../utils';
 
 const authorize = (req, res) => {
   const api = new ShopifyApi({
@@ -27,7 +27,7 @@ const install = (req, res) => {
   return res.json({ success: false });
 };
 
-module.exports = {
+export default {
   authorize,
   install
 };

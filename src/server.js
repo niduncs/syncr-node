@@ -1,9 +1,11 @@
-const express = require('express');
-const https = require('https');
-const http = require('http');
-const errorHandler = require('errorhandler');
-const bodyParser = require('body-parser');
-const session = require('express-session');
+import express from 'express';
+import http from 'http';
+import https from 'https';
+import errorHandler from 'errorhandler';
+import bodyParser from 'body-parser';
+import session from 'express-session';
+import router from './api/router';
+
 const app = express();
 
 app.disable('x-powered-by');
@@ -35,7 +37,7 @@ app.use(bodyParser.json());
 //   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 // });
 
-app.use('/api/v1', require('./api/router'));
+app.use('/api/v1', router);
 
 const server =
   process.env.NODE_ENV !== 'production' ? http.Server(app) : https.Server(app);

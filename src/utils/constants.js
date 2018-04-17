@@ -8,6 +8,6 @@ const defaultShopifyConfig = {
   backoff_delay: 1500
 };
 
-module.exports = {
+export default {
   defaultShopifyConfig
 };

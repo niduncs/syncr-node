@@ -1,4 +1,7 @@
-module.exports = {
-  constants: require('./constants'),
-  db: require('./db')
-};
+import constants from './constants';
+import db from './db';
+
+export default {
+  constants,
+  db
+}

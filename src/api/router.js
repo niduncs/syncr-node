@@ -1,5 +1,6 @@
-const express = require('express');
-const controllers = require('../lib/controllers');
+import express from 'express';
+import controllers from '../lib/controllers';
+
 const api = express.Router();
 
 api.use((req, res, next) => {
@@ -25,4 +26,4 @@ api.put('/integrations/:uid', controllers.integrations.update);
 
 api.put('user/settings', controllers.users.update);
 
-module.exports = api;
+export default api;
